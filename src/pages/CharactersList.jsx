@@ -1,19 +1,9 @@
 import React from 'react'
-import { useQuery, gql } from "@apollo/client"
-const GET_CHARACTERS = gql`
-query {
-    characters{
-      results{
-     	id
-        name
-        image
-      }
-    }
-}
-`
+import { useCharacters } from '../hooks/useCharacters';
+
+
 function CharactersList() {
-    const { error, loading, data } = useQuery(GET_CHARACTERS);
-    console.log({ error, loading, data });
+    const { error, loading, data } = useCharacters();
     if (loading) return <div>Loading.....</div>
     if (error) return <div>Something Went wrong</div>
     return (
